@@ -1,0 +1,21 @@
+package edu.csula.datascience.acquisition;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+
+public class ReadCSV {
+
+	public static void main(String args[]) throws FileNotFoundException
+	{
+		String fileName="/home/dipesh/Dataset/ZillowData/Zip_Zhvi_1bedroom.csv";
+		//Reader read=new FileReader(fileName);
+		FileReader read = new FileReader(fileName);
+		BufferedReader bf = new BufferedReader(read);
+		bf.readLine();
+		while ((line = bf.readLine()) != null) {
+		}
+		}
+	}
+}

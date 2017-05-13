@@ -1,0 +1,14 @@
+package edu.csula.datascience.acquisition;
+
+public class Apartment {
+
+	private int id;
+	private int zipcode;
+	private String apartmentType;
+	private String soldOrRented;
+	private int year;
+	private int month;
+	private int price;
+		
+	
+}

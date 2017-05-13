@@ -1,0 +1,6 @@
+package edu.csula.datascience.acquisition;
+
+public enum HouseAvailability {
+
+	RENTED,SOLD
+};

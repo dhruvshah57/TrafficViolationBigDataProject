@@ -1,0 +1,9 @@
+package edu.csula.datascience.acquisition;
+
+public  class AccessToken {
+
+	//Access Token for Calling Api
+	
+	public static String accessToken="''";
+	
+}

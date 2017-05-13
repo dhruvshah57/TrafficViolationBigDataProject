@@ -1,0 +1,64 @@
+package edu.csula.datascience.acquisition;
+
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.xml.internal.ws.util.HandlerAnnotationInfo;
+
+
+
+
+public class TrafficViolationSource {
+
+	public static void main(String args[]) throws IOException
+	{
+		BufferedReader bf=null;
+		String link_url="https://data.montgomerycountymd.gov/resource/ms8i-8ux3.json?$$app_token=TuFN23ft671pJhfldqkpAjnWe&$limit=1";
+		URL url=new URL(link_url);
+		HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
+		bf = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		ObjectMapper objectmapper =new ObjectMapper();
+		//JSONObject obj=new JSONObject();
+		Set<TrafficViolation> noDuplicate=new HashSet<TrafficViolation>();
+		//ArrayList<TrafficViolation> list=new ArrayList<TrafficViolation>();
+		String line=null;
+		while((line=bf.readLine() )!= null)
+		{
+			try
+			{
+			//System.out.println(line);
+			if(line.substring(0,1).contains("["))
+				line=line.substring(1);
+			else
+				if(line.substring(0,1).contains(","))
+					line=line.substring(1);
+			
+			TrafficViolation tvobj=objectmapper.readValue(line, TrafficViolation.class);
+			noDuplicate.add(tvobj);
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		try{
+			FileWriter write=new FileWriter("/home/dipesh/TrafficViolation/final.json");
+			
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		System.out.println(noDuplicate.size());
+	}
+}

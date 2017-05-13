@@ -1,0 +1,39 @@
+package edu.csula.datascience.acquisition;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+
+public class ReadCSV {
+
+	public static void main(String args[]) throws FileNotFoundException
+	{
+		int id=1;
+		String fileName="/home/dipesh/Dataset/ZillowData/Zip_Zhvi_1bedroom.csv";
+		//Reader read=new FileReader(fileName);
+		FileReader read = new FileReader(fileName);
+		BufferedReader bf = new BufferedReader(read);
+		List<Apartment> apartments=new ArrayList<Apartment>();
+		String line=null;
+		try {
+			bf.readLine();
+			String apartmentType="1 Bedroom";
+			String soldOrRented=HouseAvailability.SOLD.toString();
+			while ((line = bf.readLine()) != null)
+			{
+				String[] str=line.split(",");
+				if(str[5].equalsIgnoreCase("Los Angeles"))
+				{
+					int zipcode=Integer.parseInt(str[0]);
+					
+				}				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

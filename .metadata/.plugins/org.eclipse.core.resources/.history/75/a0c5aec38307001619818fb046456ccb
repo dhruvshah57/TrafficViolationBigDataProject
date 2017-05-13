@@ -1,0 +1,10 @@
+package edu.csula.datascience.acquisition;
+
+public class ReadCSV {
+
+	public static void main(String args[])
+	{
+		String fileName="/home/dipesh/Dataset/ZillowData/Zip_Zhvi_1bedroom.csv";
+		
+	}
+}

@@ -1,0 +1,55 @@
+package edu.csula.datascience.acquisition;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+
+public class ReadCSV {
+
+	public static void main(String args[]) throws FileNotFoundException
+	{
+		int id=1;
+		String fileName="/home/dipesh/Dataset/ZillowData/Zip_Zhvi_1bedroom.csv";
+		//Reader read=new FileReader(fileName);
+		FileReader read = new FileReader(fileName);
+		BufferedReader bf = new BufferedReader(read);
+		List<Apartment> apartments=new ArrayList<Apartment>();
+		String line=null;
+		try {
+			String data=bf.readLine();
+			String[] splitData=data.split(",");
+			String apartmentType="1 Bedroom";
+			String soldOrRented=HouseAvailability.SOLD.toString();
+			while ((line = bf.readLine()) != null)
+			{
+				String[] str=line.split(",");
+				if(str[6].contains("Los Angeles"))
+				{
+					int zipcode=Integer.parseInt(str[0]);
+					for(int i=8;i<str.length;i++)
+					{
+						int year=Integer.parseInt(splitData[i-1].split("-")[0].substring(1).trim());
+						int month=Integer.parseInt(splitData[i-1].split("-")[1].substring(0,splitData[i-1].split("-")[1].length()-1).trim());
+						int price=Integer.parseInt(str[i]);
+						apartments.add(new Apartment(id++, zipcode, apartmentType, soldOrRented, year, month, price));
+					}
+					
+				}	
+				
+			}
+			System.out.println(apartments.size());
+		} 
+		catch(NumberFormatException e)
+		{
+			System.out.println(e);
+		}
+		catch (IOException e) {
+		}
+			//e.printStackTrace();
+		}
+	}
+}

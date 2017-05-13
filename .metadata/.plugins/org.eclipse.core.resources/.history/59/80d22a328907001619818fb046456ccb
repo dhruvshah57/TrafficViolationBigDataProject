@@ -1,0 +1,69 @@
+package edu.csula.datascience.acquisition;
+
+public class Apartment {
+
+	private int id;
+	private int zipcode;
+	private String apartmentType;
+	private String houseAval;
+	private int year;
+	private int month;
+	private int price;
+	public Apartment()
+	{
+		
+	}
+	public Apartment(int id, int zipcode, String apartmentType,
+			String soldOrRented, int year, int month, int price) {
+		super();
+		this.id = id;
+		this.zipcode = zipcode;
+		this.apartmentType = apartmentType;
+		this.soldOrRented = soldOrRented;
+		this.year = year;
+		this.month = month;
+		this.price = price;
+	}
+	public int getId() {
+		return id;
+	}
+	public int getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
+	public String getApartmentType() {
+		return apartmentType;
+	}
+	public void setApartmentType(String apartmentType) {
+		this.apartmentType = apartmentType;
+	}
+	public String getSoldOrRented() {
+		return soldOrRented;
+	}
+	public void setSoldOrRented(String soldOrRented) {
+		this.soldOrRented = soldOrRented;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	
+	
+}
